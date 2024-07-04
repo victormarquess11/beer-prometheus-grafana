@@ -38,7 +38,7 @@ This setup provides a cost-effective alternative to subscription-based services 
 1. Clone the repository:
 
     ```sh
-    git clone https://github.com/your-username/fermentation-monitoring.git
+    git clone https://github.com/victormarquess11/beer-prometheus-grafana
     cd fermentation-monitoring
     ```
 
