@@ -1,6 +1,6 @@
 # Fermentation Monitoring with Prometheus, Grafana, and Pushgateway
 
-This repository hosts a Docker Compose stack designed to monitor data such as temperature, density, and battery levels from a beer fermentation process using an [iSpindel](https://github.com/universam1/iSpindel) device. The stack includes Prometheus for data collection, Grafana for data visualization, and Pushgateway for receiving data from the iSpindel.
+This repository hosts a Docker Compose stack designed to monitor fermentation data such as temperature, density, and battery levels from a beer fermentation process using an [iSpindel](https://github.com/universam1/iSpindel) device. The stack includes Prometheus for data collection, Grafana for data visualization, and Pushgateway for receiving data from the iSpindel.
 
 ## Table of Contents
 
@@ -13,18 +13,19 @@ This repository hosts a Docker Compose stack designed to monitor data such as te
     - [Prometheus](#prometheus)
     - [Grafana](#grafana)
     - [Pushgateway](#pushgateway)
+    - [Network Configuration](#network-configuration)
   - [Usage](#usage)
   - [License](#license)
 
 ## Overview
 
-This project sets up a monitoring system for beer fermentation using Docker Compose. It includes the following components:
+This project sets up a robust monitoring system for beer fermentation using Docker Compose. The stack consists of the following components:
 
--   **Prometheus**: For scraping and storing time series data from Pushgateway.
--   **Grafana**: For visualizing the data stored in Prometheus.
--   **Pushgateway**: For receiving data pushed from the iSpindel device.
+-   **Prometheus**: Responsible for scraping and storing time series data from Pushgateway.
+-   **Grafana**: Used for visualizing the data stored in Prometheus.
+-   **Pushgateway**: Acts as an intermediary for receiving data pushed from the iSpindel device.
 
-This setup is an alternative to paid services like Brewfather or similar services. It allows you to monitor your fermentation data without any subscription fees. However, you need to have a server (in this case, your own computer) running whenever you expect the iSpindel to send data.
+This setup provides a cost-effective alternative to subscription-based services like Brewfather, allowing you to monitor your fermentation process without recurring fees. However, it requires that your server (or computer) is running whenever you expect the iSpindel to send data.
 
 ## Requirements
 
@@ -55,15 +56,19 @@ This setup is an alternative to paid services like Brewfather or similar service
 
 ### Prometheus
 
-Prometheus is configured to scrape metrics from the Pushgateway. You can find and edit the configuration in `prometheus/prometheus.yml` if needed.
+Prometheus is pre-configured to scrape metrics from the Pushgateway. The configuration can be found and adjusted in `prometheus/prometheus.yml` as needed.
 
 ### Grafana
 
-Grafana is pre-configured with a dashboard to visualize the fermentation data. You can import and modify dashboards as required.
+Grafana is pre-configured with a dashboard to visualize the fermentation data. You can import additional dashboards or modify the existing ones to suit your requirements.
 
 ### Pushgateway
 
-Pushgateway receives the data from the iSpindel device and makes it available for Prometheus to scrape. Ensure that the iSpindel is configured to send data to the Pushgateway's address.
+Pushgateway is set up to receive data from the iSpindel device and make it available for Prometheus to scrape. Ensure the iSpindel is configured to send data to the Pushgateway's address.
+
+### Network Configuration
+
+Make sure your server has a reserved IP address within your network. The iSpindel should be configured to send data to this reserved IP on port 9091 (the Pushgateway port). Alternatively, you can use dynamic DNS services or configure your router to forward the necessary ports to your server's IP address, ensuring consistent communication with the iSpindel device.
 
 ## Usage
 
