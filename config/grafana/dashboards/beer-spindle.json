@@ -1,0 +1,221 @@
+{
+    "annotations": {
+        "list": [
+            {
+                "builtIn": 1,
+                "datasource": { "type": "grafana", "uid": "-- Grafana --" },
+                "enable": true,
+                "hide": true,
+                "iconColor": "rgba(0, 211, 255, 1)",
+                "name": "Annotations & Alerts",
+                "type": "dashboard"
+            }
+        ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1,
+    "links": [],
+    "panels": [
+        {
+            "datasource": { "type": "prometheus", "uid": "edqoy852tyarkd" },
+            "fieldConfig": {
+                "defaults": {
+                    "color": { "mode": "thresholds" },
+                    "mappings": [],
+                    "max": 40,
+                    "min": -10,
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            { "color": "blue", "value": null },
+                            { "color": "green", "value": 15 },
+                            { "color": "red", "value": 20 }
+                        ]
+                    },
+                    "unit": "celsius"
+                },
+                "overrides": []
+            },
+            "gridPos": { "h": 7, "w": 10, "x": 0, "y": 0 },
+            "id": 2,
+            "options": {
+                "minVizHeight": 75,
+                "minVizWidth": 75,
+                "orientation": "auto",
+                "reduceOptions": { "calcs": ["lastNotNull"], "fields": "/^Temperatura$/", "values": false },
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true,
+                "sizing": "auto",
+                "text": {}
+            },
+            "pluginVersion": "11.0.1",
+            "targets": [
+                {
+                    "datasource": { "type": "prometheus", "uid": "edqoy852tyarkd" },
+                    "disableTextWrap": false,
+                    "editorMode": "builder",
+                    "expr": "temperature",
+                    "fullMetaSearch": false,
+                    "includeNullMetadata": true,
+                    "instant": false,
+                    "legendFormat": "Temperatura",
+                    "range": true,
+                    "refId": "A",
+                    "useBackend": false
+                }
+            ],
+            "title": "Temperatura Atual",
+            "type": "gauge"
+        },
+        {
+            "datasource": { "type": "prometheus", "uid": "edqoy852tyarkd" },
+            "fieldConfig": {
+                "defaults": {
+                    "color": { "mode": "palette-classic" },
+                    "custom": {
+                        "axisBorderShow": false,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "left",
+                        "axisSoftMax": 40,
+                        "axisSoftMin": -10,
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "none",
+                        "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+                        "insertNulls": false,
+                        "lineInterpolation": "linear",
+                        "lineWidth": 3,
+                        "pointSize": 5,
+                        "scaleDistribution": { "type": "linear" },
+                        "showPoints": "auto",
+                        "spanNulls": false,
+                        "stacking": { "group": "A", "mode": "none" },
+                        "thresholdsStyle": { "mode": "off" }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            { "color": "green", "value": null },
+                            { "color": "red", "value": 80 }
+                        ]
+                    }
+                },
+                "overrides": [
+                    {
+                        "matcher": { "id": "byName", "options": "Densidade" },
+                        "properties": [
+                            { "id": "unit", "value": "F.G." },
+                            { "id": "custom.axisPlacement", "value": "right" },
+                            { "id": "custom.axisSoftMin", "value": 1 },
+                            { "id": "custom.axisSoftMax", "value": 1.06 },
+                            { "id": "decimals", "value": 3 },
+                            { "id": "custom.axisColorMode", "value": "series" },
+                            { "id": "color", "value": { "fixedColor": "green", "mode": "shades" } }
+                        ]
+                    },
+                    {
+                        "matcher": { "id": "byName", "options": "Temperatura" },
+                        "properties": [
+                            { "id": "unit", "value": "celsius" },
+                            { "id": "custom.axisColorMode", "value": "series" },
+                            { "id": "color", "value": { "fixedColor": "blue", "mode": "shades" } },
+                            { "id": "custom.axisPlacement", "value": "left" }
+                        ]
+                    },
+                    {
+                        "matcher": { "id": "byName", "options": "Bateria" },
+                        "properties": [
+                            { "id": "unit", "value": "volt" },
+                            { "id": "custom.axisColorMode", "value": "series" },
+                            {
+                                "id": "color",
+                                "value": { "fixedColor": "yellow", "mode": "shades", "seriesBy": "last" }
+                            },
+                            { "id": "custom.axisPlacement", "value": "left" },
+                            { "id": "custom.axisSoftMin", "value": 0 },
+                            { "id": "custom.axisSoftMax", "value": 5 }
+                        ]
+                    }
+                ]
+            },
+            "gridPos": { "h": 15, "w": 24, "x": 0, "y": 7 },
+            "id": 1,
+            "options": {
+                "legend": {
+                    "calcs": ["min", "max", "mean", "lastNotNull"],
+                    "displayMode": "table",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "timezone": [""],
+                "tooltip": { "maxHeight": 600, "mode": "single", "sort": "asc" }
+            },
+            "targets": [
+                {
+                    "datasource": { "type": "prometheus", "uid": "edqoy852tyarkd" },
+                    "disableTextWrap": false,
+                    "editorMode": "builder",
+                    "expr": "battery",
+                    "fullMetaSearch": false,
+                    "includeNullMetadata": true,
+                    "instant": false,
+                    "interval": "",
+                    "legendFormat": "Bateria",
+                    "range": true,
+                    "refId": "Bateria",
+                    "useBackend": false
+                },
+                {
+                    "datasource": { "type": "prometheus", "uid": "edqoy852tyarkd" },
+                    "disableTextWrap": false,
+                    "editorMode": "builder",
+                    "expr": "temperature",
+                    "format": "time_series",
+                    "fullMetaSearch": false,
+                    "hide": false,
+                    "includeNullMetadata": true,
+                    "instant": false,
+                    "legendFormat": "Temperatura",
+                    "range": true,
+                    "refId": "Temperatura",
+                    "useBackend": false
+                },
+                {
+                    "datasource": { "type": "prometheus", "uid": "edqoy852tyarkd" },
+                    "disableTextWrap": false,
+                    "editorMode": "builder",
+                    "exemplar": false,
+                    "expr": "gravity",
+                    "fullMetaSearch": false,
+                    "hide": false,
+                    "includeNullMetadata": true,
+                    "instant": false,
+                    "legendFormat": "Densidade",
+                    "range": true,
+                    "refId": "Densidade",
+                    "useBackend": false
+                }
+            ],
+            "title": "Cerveja Ispindel",
+            "type": "timeseries"
+        }
+    ],
+    "refresh": "",
+    "schemaVersion": 39,
+    "tags": [],
+    "templating": { "list": [] },
+    "time": { "from": "now-1h", "to": "now" },
+    "timeRangeUpdatedDuringEditOrView": false,
+    "timepicker": {},
+    "timezone": "browser",
+    "title": "Cerveja Spindle",
+    "uid": "ddqp1g06ijsaof",
+    "version": 3,
+    "weekStart": ""
+}
