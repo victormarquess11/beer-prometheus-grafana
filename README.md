@@ -68,7 +68,11 @@ Pushgateway is set up to receive data from the iSpindel device and make it avail
 
 ### Network Configuration
 
-Make sure your server has a reserved IP address within your network. The iSpindel should be configured to send data to this reserved IP on port 9091 (the Pushgateway port). Alternatively, you can use dynamic DNS services or configure your router to forward the necessary ports to your server's IP address, ensuring consistent communication with the iSpindel device.
+Make sure your server has a reserved IP address within your network.
+
+The iSpindel should be configured to send data to this reserved IP on port 9091 (the Pushgateway port).
+
+Alternatively, you can use dynamic DNS services or configure your router to forward the necessary ports to your server's IP address, ensuring consistent communication with the iSpindel device.
 
 ## Usage
 
